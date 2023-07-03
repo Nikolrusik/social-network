@@ -1,17 +1,15 @@
 from datetime import datetime
 
 from sqlalchemy import TIMESTAMP, Integer, String, Boolean, MetaData
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from database import Base, metadata
+from database import Base
 
 # metadata = MetaData()
 
 
 class User(Base):
     __tablename__ = "user"
-
-    metadata = metadata
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     email: Mapped[str] = mapped_column(
@@ -30,3 +28,6 @@ class User(Base):
     is_verified: Mapped[bool] = mapped_column(
         Boolean, default=False, nullable=False
     )
+
+    records: Mapped[relationship] = relationship(
+        'Record', back_populates='user')

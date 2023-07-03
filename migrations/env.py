@@ -8,14 +8,11 @@ import sys
 
 sys.path.append(os.path.join(sys.path[0], 'src'))
 
+from src.records.models import Record
+from src.auth.models import *
 from src.database import metadata
 
-from src.auth.models import *
 from src.config import DB_HOST, DB_PORT, DB_USER, DB_NAME, DB_PASS
-
-# from src.auth.models import metadata as auth_metadata
-# from src.shop.products.models import metadata as shop_metadata
-
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
