@@ -156,7 +156,7 @@ async def like_record(like_or_dislike: md.LikeOrDislike, record_id: str, user: U
     if record.user_id == user.id:
         raise HTTPException(status_code=403, detail={
         'status': 'error',
-        'data': 'Нельзя оценивать свои записи'
+        'data': 'You cannot rate your own records.'
     })
 
     is_liked = await ut.is_liked(record.id, user.id, session)
@@ -164,7 +164,7 @@ async def like_record(like_or_dislike: md.LikeOrDislike, record_id: str, user: U
     if is_liked: 
         raise HTTPException(status_code=403, detail={
         'status': 'error',
-        'data': 'Вы уже оценивали эту запись'
+        'data': 'You have already rated this record.'
     })
 
     session.add(md.Like(user_id=user.id, record_id=record.id, like=like_or_dislike))

@@ -3,11 +3,11 @@ from enum import Enum
 from sqlalchemy import TIMESTAMP, Integer, String, ForeignKey, Enum as EnumType
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from database import Base
+from database import Base, metadata
 
 
 class Record(Base):
-    __tablename__ = "record"
+    __tablename__ = "records"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     body: Mapped[str] = mapped_column(String)
@@ -30,10 +30,10 @@ class LikeOrDislike(Enum):
 
 
 class Like(Base):
-    __tablename__ = "like"
+    __tablename__ = "likes"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
-    record_id: Mapped[int] = mapped_column(Integer, ForeignKey('record.id', ondelete='CASCADE'))
+    record_id: Mapped[int] = mapped_column(Integer, ForeignKey('records.id', ondelete='CASCADE'))
     user_id: Mapped[int] = mapped_column(
         Integer, ForeignKey('user.id', ondelete='CASCADE'))
     like: Mapped[str] = mapped_column(
