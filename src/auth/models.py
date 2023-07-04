@@ -25,6 +25,3 @@ class User(Base):
     is_verified: Mapped[bool] = mapped_column(
         Boolean, default=False, nullable=False
     )
-
-    # records = relationship(
-    #     'Record', back_populates='user')

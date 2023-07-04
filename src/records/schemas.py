@@ -16,3 +16,7 @@ class RecordUpdate(RecordBase):
 
 class Record(RecordBase):
     id: int
+    created_at: datetime
+    user_id: int
+    likes: int = 0
+    dislikes: int = 0

@@ -1,9 +1,9 @@
 from datetime import datetime
-
-from sqlalchemy import TIMESTAMP, Integer, String, ForeignKey
+from enum import Enum
+from sqlalchemy import TIMESTAMP, Integer, String, ForeignKey, Enum as EnumType
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from database import Base, metadata
+from database import Base
 
 
 class Record(Base):
@@ -17,8 +17,32 @@ class Record(Base):
         Integer, ForeignKey('user.id', ondelete='CASCADE'))
 
     user = relationship(
-        'user', backref='records'
+        'User', backref='records'
     )
 
     def __repr__(self):
         return f'Record(id={self.id}, body={self.name}, user_id={self.user_id})'
+    
+
+class LikeOrDislike(Enum):
+        DISLIKE = '0'
+        LIKE = '1'
+
+
+class Like(Base):
+    __tablename__ = "like"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    record_id: Mapped[int] = mapped_column(Integer, ForeignKey('record.id', ondelete='CASCADE'))
+    user_id: Mapped[int] = mapped_column(
+        Integer, ForeignKey('user.id', ondelete='CASCADE'))
+    like: Mapped[str] = mapped_column(
+        EnumType(LikeOrDislike, name='like')
+    )
+
+    user = relationship(
+        'User', backref='likes'
+    )
+
+    def __repr__(self):
+        return f'Like(id={self.id}, record_id={self.record_id}, user_id={self.user_id}'
