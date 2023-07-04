@@ -5,17 +5,17 @@ Project Overview:
     
 Features:
 - JWT-based registration
-    - User authentication and registration
-    - Create, update, view, and delete records
-    - Like and dislike records (excluding own records)
-    - API documentation (Swagger/Redoc)
-    - (Bonus) Email existence check during registration
+- User authentication and registration
+- Create, update, view, and delete records
+- Like and dislike records (excluding own records)
+- API documentation (Swagger/Redoc)
+- (Bonus) Email existence check during registration
 
 Tech Stack:
-    - FastAPI 0.95
-    - FastAPI Users
-    - PostgreSQL
-    - SQLAlchemy
+- FastAPI 0.95
+- FastAPI Users
+- PostgreSQL
+- SQLAlchemy
 
 
 # How to run
