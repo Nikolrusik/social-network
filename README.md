@@ -4,7 +4,7 @@ Project Overview:
     Simple RESTful API using FastAPI for a social networking application.
     
 Features:
-    - JWT-based registration
+- JWT-based registration
     - User authentication and registration
     - Create, update, view, and delete records
     - Like and dislike records (excluding own records)
