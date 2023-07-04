@@ -5,9 +5,6 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from database import Base
 
-# metadata = MetaData()
-
-
 class User(Base):
     __tablename__ = "user"
 
@@ -29,5 +26,5 @@ class User(Base):
         Boolean, default=False, nullable=False
     )
 
-    records: Mapped[relationship] = relationship(
-        'Record', back_populates='user')
+    # records = relationship(
+    #     'Record', back_populates='user')

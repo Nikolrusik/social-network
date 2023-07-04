@@ -3,9 +3,7 @@ from datetime import datetime
 from sqlalchemy import TIMESTAMP, Integer, String, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from auth.models import User
-
-from database import Base
+from database import Base, metadata
 
 
 class Record(Base):
@@ -18,8 +16,8 @@ class Record(Base):
     user_id: Mapped[int] = mapped_column(
         Integer, ForeignKey('user.id', ondelete='CASCADE'))
 
-    user: Mapped['User'] = relationship(
-        'User', back_populates='records'
+    user = relationship(
+        'user', backref='records'
     )
 
     def __repr__(self):

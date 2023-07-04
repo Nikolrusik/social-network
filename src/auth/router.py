@@ -1,10 +1,8 @@
 from fastapi import APIRouter
 
-from .base_config import fastapi_users
+from .base_config import fastapi_users, auth_backend
 from auth.schemas import UserCreate, UserRead
-from auth.base_config import auth_backend, fastapi_users
-
-
+from auth.base_config import auth_backend
 router = APIRouter(
     prefix='/auth',
     tags=['Auth']
